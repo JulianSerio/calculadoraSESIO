@@ -32,6 +32,7 @@ public class Blue extends AppCompatActivity {
         float dolars = Float.parseFloat(et.getText().toString());
 
         if (dolars == 0) {
+            
             res.setText("ERROR!");
         }
         else{
