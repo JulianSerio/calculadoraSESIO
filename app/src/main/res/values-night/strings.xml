@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="sin_impuestos">Sin Impuestos:</string>
+    <string name="app_name">calculadoraSESIO</string>
+    <string name="cantidad_de_dolares_usd">Cantidad de dolares (USD):</string>
+    <string name="imp_a_la_ganancias_45">Imp. a la ganancias (45%):</string>
+    <string name="impuesto_pais_30">Impuesto Pais (30%):</string>
+    <string name="calcular">CALCULAR</string>
+    <string name="ingrese_cantidad_de_usd">Ingrese cantidad de USD</string>
+    <string name="ingrese_cantidad_de_pesos">Ingrese cantidad de pesos</string>
 </resources>

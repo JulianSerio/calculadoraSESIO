@@ -7,14 +7,19 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class Taxes extends AppCompatActivity {
+public class Tarjeta extends AppCompatActivity {
     private EditText et;
     private TextView tvImpPais,tvImpGanancias,tvSinImp,tvTotal,tvDolar;
+    private int precioDolarHoy = 186;
+    private final int pImP = 30;
+    private final int pImG = 45;
+    private String dolarHoy;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_taxes);
+        setContentView(R.layout.activity_tarjeta);
 
         et = findViewById(R.id.editTextInput);
         tvSinImp = findViewById(R.id.tvSinImpuestos);
@@ -28,15 +33,33 @@ public class Taxes extends AppCompatActivity {
         Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }
+/**
+    protected Void doItBackground(Void... voids){
+        String url = "https://dolarhoy.com/";
+        String text;
+        try {
+            Document d = Jsoup.connect(url).get();
+            Elements elements = d.select("div.tile is-parent is-7 is-vertical");
+            text = elements.text();
+
+            Elements conte = d.select("div.tile is-parent is-7 is-vertical");
+            dolarHoy = String.valueOf(conte.select("div.tile is-child").select("div.values").select("div.compra").select("div.val"));
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+ **/
+
+
 
     public void calcular (View view){
-        int precioDolarHoy = 185;
-        tvDolar.setText(String.valueOf(precioDolarHoy));
-        int pImP = 30;
-        int pImG = 45;
+        tvDolar.setText(String.valueOf("$ "+precioDolarHoy));
         float totalImpPais,totalSinImp,totalImpGan,total;
         float dolars = Float.parseFloat(et.getText().toString());
-        if (dolars == 0)  {
+
+        if (dolars == 0) {
             tvTotal.setText("ERROR!");
         }
         else{
@@ -45,10 +68,10 @@ public class Taxes extends AppCompatActivity {
             totalImpGan = ((dolars / 100) * pImG) * precioDolarHoy;
             total = (totalSinImp + totalImpPais + totalImpGan);
 
-            tvSinImp.setText(String.valueOf(totalSinImp));
-            tvImpPais.setText(String.valueOf(totalImpPais));
-            tvImpGanancias.setText(String.valueOf(totalImpGan));
-            tvTotal.setText((String.valueOf(total)));
+            tvSinImp.setText(String.valueOf("$ "+totalSinImp));
+            tvImpPais.setText(String.valueOf("$ "+totalImpPais));
+            tvImpGanancias.setText(String.valueOf("$ "+totalImpGan));
+            tvTotal.setText((String.valueOf("$ "+total)));
         }
     }
 
